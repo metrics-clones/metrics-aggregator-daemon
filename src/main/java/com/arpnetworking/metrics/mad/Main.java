@@ -40,6 +40,7 @@ import com.arpnetworking.metrics.mad.configuration.PipelineConfiguration;
 import com.arpnetworking.metrics.proxy.actors.Telemetry;
 import com.arpnetworking.steno.Logger;
 import com.arpnetworking.steno.LoggerFactory;
+import com.arpnetworking.steno.MetricsAppender;
 import com.arpnetworking.utility.Configurator;
 import com.arpnetworking.utility.Launchable;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -163,6 +164,7 @@ public final class Main implements Launchable {
     public synchronized void launch() {
         _actorSystem = launchAkka();
         final Injector injector = launchGuice(_actorSystem);
+        launchMetricsLogs(injector);
         launchActors(injector);
         launchPipelines(injector);
         launchJvmMetricsCollector(injector);
@@ -178,6 +180,20 @@ public final class Main implements Launchable {
         shutdownActors();
         shutdownGuice();
         shutdownAkka();
+    }
+
+    private void launchMetricsLogs(final Injector injector) {
+        LOGGER.info()
+                .setMessage("Launching Log Metrics")
+                .log();
+        final MetricsFactory metricsFactory = injector.getInstance(MetricsFactory.class);
+
+        final MetricsAppender appender = new MetricsAppender(metricsFactory);
+        appender.start();
+
+        final ch.qos.logback.classic.Logger rootLogger = (ch.qos.logback.classic.Logger) org.slf4j.LoggerFactory.getLogger(
+                ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
+        rootLogger.addAppender(appender);
     }
 
     private void launchJvmMetricsCollector(final Injector injector) {

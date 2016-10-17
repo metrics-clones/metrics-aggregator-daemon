@@ -15,6 +15,8 @@
  */
 package com.arpnetworking.tsdcore.statistics;
 
+import com.arpnetworking.steno.Logger;
+import com.arpnetworking.steno.LoggerFactory;
 import com.arpnetworking.utility.InterfaceDatabase;
 import com.arpnetworking.utility.ReflectionsDatabase;
 import com.google.common.base.Optional;
@@ -22,8 +24,6 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

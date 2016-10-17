@@ -16,6 +16,8 @@
 package com.arpnetworking.metrics.mad.performance;
 
 import com.arpnetworking.metrics.generator.util.TestFileGenerator;
+import com.arpnetworking.steno.Logger;
+import com.arpnetworking.steno.LoggerFactory;
 import com.arpnetworking.test.junitbenchmarks.JsonBenchmarkConsumer;
 import com.carrotsearch.junitbenchmarks.BenchmarkOptions;
 import com.carrotsearch.junitbenchmarks.BenchmarkRule;
@@ -32,8 +34,6 @@ import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

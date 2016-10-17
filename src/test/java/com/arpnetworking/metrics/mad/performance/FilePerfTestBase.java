@@ -21,6 +21,8 @@ import com.arpnetworking.configuration.jackson.StaticConfiguration;
 import com.arpnetworking.metrics.generator.util.TestFileGenerator;
 import com.arpnetworking.metrics.mad.Pipeline;
 import com.arpnetworking.metrics.mad.configuration.PipelineConfiguration;
+import com.arpnetworking.steno.Logger;
+import com.arpnetworking.steno.LoggerFactory;
 import com.arpnetworking.tsdcore.sinks.Sink;
 import com.google.common.base.Charsets;
 import com.google.common.base.Stopwatch;
@@ -32,8 +34,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.joda.time.Duration;
 import org.joda.time.Period;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;

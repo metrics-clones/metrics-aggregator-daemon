@@ -16,6 +16,8 @@
 
 package com.arpnetworking.metrics.common.tailer;
 
+import com.arpnetworking.steno.Logger;
+import com.arpnetworking.steno.LoggerFactory;
 import com.arpnetworking.utility.ManualSingleThreadedTrigger;
 import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
@@ -24,8 +26,6 @@ import org.joda.time.Duration;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
 import java.io.File;
